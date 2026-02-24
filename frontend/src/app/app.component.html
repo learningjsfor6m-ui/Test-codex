@@ -1,0 +1,26 @@
+<div class="page">
+  <h1>QABuddy - Angular UI</h1>
+  <div class="layout">
+    <section class="chat">
+      <div class="message" *ngFor="let msg of messages" [class.user]="msg.sender === 'You'">
+        <strong>{{ msg.sender }}:</strong>
+        <pre>{{ msg.text }}</pre>
+      </div>
+    </section>
+
+    <aside class="tools">
+      <h3>Tools</h3>
+      <label><input type="checkbox" [(ngModel)]="useKnowledgeBase" /> Knowledge Base Lookup</label>
+      <label><input type="checkbox" [(ngModel)]="useEnhancer" /> Answer Enhancer</label>
+    </aside>
+  </div>
+
+  <div class="composer">
+    <input
+      [(ngModel)]="userInput"
+      placeholder="Ask your question..."
+      (keydown.enter)="send()"
+    />
+    <button (click)="send()" [disabled]="loading">{{ loading ? 'Sending...' : 'Send' }}</button>
+  </div>
+</div>
