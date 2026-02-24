@@ -14,6 +14,7 @@
             "outputPath": "dist/qa-buddy-ui",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "styles": ["src/styles.css"],
             "assets": []
