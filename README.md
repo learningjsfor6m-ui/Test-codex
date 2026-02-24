@@ -1,29 +1,38 @@
-# Python Enhanced Q&A Chatbot
+# QABuddy: Angular UI + Python Backend
 
-A lightweight Python chatbot that improves question-and-answer interactions by:
+This project now includes:
+- **Python backend API** (Flask) for chatbot responses.
+- **Angular frontend UI** that calls the Python API.
 
-- Giving structured answers
-- Suggesting useful follow-up prompts
-- Optionally retrieving relevant lines from a local knowledge-base text file
-
-## Run
+## 1) Run backend
 
 ```bash
-python3 chatbot.py
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python backend/app.py
 ```
 
-Optional arguments:
+Backend runs on `http://localhost:5000`.
+
+## 2) Run Angular UI
 
 ```bash
-python3 chatbot.py --name HelperBot --kb knowledge.txt
-python3 chatbot.py --ui
+cd frontend
+npm install
+npm start
 ```
 
-Use `--ui` to open a desktop interface where users can enter prompts and enable/disable chatbot tools (Knowledge Base Lookup and Answer Enhancer).
+Frontend runs on `http://localhost:4200` and sends chat requests to the Python backend.
 
-## Example `knowledge.txt`
+## API
 
-```text
-Python is an interpreted, high-level programming language.
-A chatbot can improve support efficiency by handling common questions instantly.
+- `GET /api/health`
+- `POST /api/chat`
+  - Body: `{ "message": "your prompt", "tools": ["knowledge_base", "answer_enhancer"] }`
+
+## Optional CLI mode
+
+```bash
+python chatbot.py --name QABuddy
 ```
